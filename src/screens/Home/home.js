@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 
 import React from 'react';
+import {BorderlessButton, RectButton} from 'react-native-gesture-handler';
+import FavoriteIcon from '../../../assets/icons/favorite.svg';
 
 const Home = () => {
   return (
@@ -54,6 +56,14 @@ const Home = () => {
         }}>
         <Text style={{color: '#fff'}}>Sign In</Text>
       </Pressable>
+
+      <RectButton onPress={() => {}}>
+        <Text>Sign In</Text>
+      </RectButton>
+
+      <BorderlessButton onPress={() => {}} style={{height: 24, width: 24}}>
+        <FavoriteIcon height={24} width={24} fill="red" />
+      </BorderlessButton>
     </View>
   );
 };
