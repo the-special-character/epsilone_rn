@@ -6,11 +6,21 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Pressable,
+  Alert,
 } from 'react-native';
 
 import React from 'react';
-import {BorderlessButton, RectButton} from 'react-native-gesture-handler';
+import {
+  BorderlessButton,
+  gestureHandlerRootHOC,
+  RectButton,
+} from 'react-native-gesture-handler';
 import FavoriteIcon from '../../../assets/icons/favorite.svg';
+import ReactNativeModal from 'react-native-modal';
+
+const ModalContent = gestureHandlerRootHOC(({children}) => {
+  return children;
+});
 
 const Home = () => {
   return (
@@ -57,13 +67,33 @@ const Home = () => {
         <Text style={{color: '#fff'}}>Sign In</Text>
       </Pressable>
 
-      <RectButton onPress={() => {}}>
+      <RectButton
+        onPress={() => {
+          Alert.alert('hello from button');
+        }}>
         <Text>Sign In</Text>
       </RectButton>
 
       <BorderlessButton onPress={() => {}} style={{height: 24, width: 24}}>
         <FavoriteIcon height={24} width={24} fill="red" />
       </BorderlessButton>
+
+      <ReactNativeModal isVisible>
+        <ModalContent>
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <View style={{backgroundColor: '#fff', padding: 16}}>
+              <Text>I am the modal content!</Text>
+
+              <RectButton
+                onPress={() => {
+                  Alert.alert('hello from modal button');
+                }}>
+                <Text>Sign In</Text>
+              </RectButton>
+            </View>
+          </View>
+        </ModalContent>
+      </ReactNativeModal>
     </View>
   );
 };
